@@ -75,6 +75,11 @@ fi
 #Define Default application
 /usr/local/zend/bin/zs-client.sh applicationDefine --name=default --baseUrl="http://<default-server>:80/" --zskey=$WEB_API_KEY --zssecret=$WEB_API_KEY_HASH > /dev/null 2>&1
 
+# Enable mssql, dblib, and memcache extensions
+$ZS_MANAGE extension-on -e 'memcache' -N $WEB_API_KEY -K $WEB_API_KEY_HASH
+$ZS_MANAGE extension-on -e 'mssql' -N $WEB_API_KEY -K $WEB_API_KEY_HASH
+$ZS_MANAGE extension-on -e 'pdo_dblib' -N $WEB_API_KEY -K $WEB_API_KEY_HASH
+
 echo "restarting Zend Server"
 $ZS_MANAGE restart -p -N $WEB_API_KEY -K $WEB_API_KEY_HASH
 
@@ -97,6 +102,11 @@ fi
 
 #Define Default application
 /usr/local/zend/bin/zs-client.sh applicationDefine --name=default --baseUrl="http://<default-server>:80/" --zskey=$WEB_API_KEY --zssecret=$WEB_API_KEY_HASH > /dev/null 2>&1
+
+# Enable mssql, dblib, and memcache extensions
+$ZS_MANAGE extension-on -e 'memcache' -N $WEB_API_KEY -K $WEB_API_KEY_HASH
+$ZS_MANAGE extension-on -e 'mssql' -N $WEB_API_KEY -K $WEB_API_KEY_HASH
+$ZS_MANAGE extension-on -e 'pdo_dblib' -N $WEB_API_KEY -K $WEB_API_KEY_HASH
 
 echo "restarting ZS"
 $ZS_MANAGE restart -p -N $WEB_API_KEY -K $WEB_API_KEY_HASH
